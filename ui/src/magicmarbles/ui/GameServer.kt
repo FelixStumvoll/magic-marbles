@@ -27,7 +27,7 @@ class GameServer(
     private val activeGames = ConcurrentHashMap<String, PlayerState>()
 
     fun clearOldStates() {
-        val clearLimit = LocalDateTime.now().minusSeconds(30)
+        val clearLimit = LocalDateTime.now().minusHours(1)
         activeGames.values.removeIf { it.lastSeen.isBefore(clearLimit) }
     }
 
